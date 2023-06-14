@@ -15,7 +15,7 @@ class Solution {
         
         
         int maxx=big(arr);
-        System.out.println(maxx);
+        //System.out.println(maxx);
         return maxx;
         
         
