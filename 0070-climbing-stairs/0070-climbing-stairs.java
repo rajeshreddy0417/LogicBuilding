@@ -1,3 +1,4 @@
+//memoization
 class Solution {
     public int climbStairs(int n) {
         HashMap <Integer,Integer> hm=new HashMap<>();
