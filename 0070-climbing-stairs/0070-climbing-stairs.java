@@ -1,24 +1,12 @@
-//memoization
 class Solution {
     public int climbStairs(int n) {
-        HashMap <Integer,Integer> hm=new HashMap<>();
+        int[] dp=new int[n+1];
         
-        return fun(n,hm);
+        dp[0]=dp[1]=1;
         
-    }
-    public int fun(int n,HashMap<Integer,Integer> hm){
-        if(n==0 || n==1){
-            return 1;
+        for(int i=2;i<=n;i++){
+            dp[i]=dp[i-1]+dp[i-2];
         }
-        
-        if(!hm.containsKey(n)){
-            hm.put(n,fun(n-1,hm)+fun(n-2,hm));
-        }
-        return hm.get(n);
-        
-        
-        
-        
-        
+        return dp[n];
     }
 }
