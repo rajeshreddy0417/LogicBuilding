@@ -1,6 +1,6 @@
 class Solution {
     public int appendCharacters(String s, String t) {
-        int count=0;
+        
         int ind=0;
         
         for(int i=0;i<s.length();i++){
