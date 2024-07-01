@@ -1,3 +1,4 @@
+//BFS approach
 class Pair{
     int row;
     int col;
