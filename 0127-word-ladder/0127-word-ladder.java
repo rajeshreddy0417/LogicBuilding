@@ -1,41 +1,43 @@
-class Solution {
-    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        if(!wordList.contains(endWord)){
-            return 0;
-        }
-        
-        Set<String> set=new HashSet<>();
-        Queue<String> que=new LinkedList<>();
-        que.offer(beginWord);
-        int len=1;
-        
-        while(!que.isEmpty()){
-            int size=que.size();
-            for(int i=0;i<size;i++){
-                String curr=que.poll();
-            if(curr.equals(endWord)){
-                return len;
-            }
-            for(String word:wordList){
-                if(fun(curr,word,0) && !set.contains(word)){
-                    que.offer(word);
-                    set.add(word);
-                }
-            }
-            }
-        len++;
-        }
-        return 0;        
+class Pair{
+    String str;
+    int steps;
+    public Pair(String str,int steps){
+        this.str=str;
+        this.steps=steps;
     }
-    public boolean fun(String m,String s,int count){
-        for(int i=0;i<m.length();i++){
-            if(m.charAt(i)!=s.charAt(i)){
-                count++;
-                if(count>1){
-                    return false;
+}
+class Solution {
+    public int ladderLength(String s, String e, List<String> wordList) {
+        Set<String> set=new HashSet<>();
+        for(int i=0;i<wordList.size();i++){
+            set.add(wordList.get(i));
+        }
+        
+        Queue<Pair> que=new LinkedList<>();
+        que.add(new Pair(s,1));
+        set.remove(s);
+        while(!que.isEmpty()){
+            String curr=que.peek().str;
+            int size=que.peek().steps;
+            que.remove();
+            if(curr.equals(e)==true){
+                return size;
+            }
+            
+            for(int i=0;i<curr.length();i++){
+                for(char ch='a';ch<='z';ch++){
+                    char[] wordarr=curr.toCharArray();
+                    wordarr[i]=ch;
+                    String newword=new String(wordarr);
+                    if(set.contains(newword)){
+                        set.remove(newword);
+                        que.add(new Pair(newword,size+1));
+                    }
                 }
             }
         }
-        return count==1;
+        
+        System.out.println(set);
+        return 0;
     }
 }
