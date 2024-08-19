@@ -15,21 +15,21 @@
  */
 class Solution {
     public int sumOfLeftLeaves(TreeNode root) {
-        TreeNode node=root;
-        return fun(node,false);
+        return fun(root,false);
     }
-    public int fun(TreeNode node,boolean isLeft){
-        if(node==null){
-            return 0;
+    int fun(TreeNode node,boolean flag){
+        int ans=0;
+        if(flag && node.left==null && node.right==null){
+            ans=ans+node.val;
+            return node.val;
         }
-        
-        if(node.left==null && node.right==null){
-            return isLeft? node.val:0;
+        int left=0,right=0;
+        if(node.left!=null){
+            left=left+fun(node.left,true);
         }
-        
-        int left=fun(node.left,true);
-        int right=fun(node.right,false);
+        if(node.right!=null){
+            right=right+fun(node.right,false);
+        }
         return left+right;
-        
     }
 }
