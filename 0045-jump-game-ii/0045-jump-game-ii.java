@@ -10,7 +10,7 @@ class Solution {
             }
             //ind=Math.max(ind,i+nums[i]);
             if(i==end){
-                count++;
+                count=count+1;
                 end=ind;
             }
         }
