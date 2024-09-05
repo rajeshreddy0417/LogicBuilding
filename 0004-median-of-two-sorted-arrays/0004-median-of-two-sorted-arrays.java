@@ -22,8 +22,8 @@ class Solution {
             sol=(arr[x-1]+arr[x])/2.0;
         }
         
-        System.out.println(Arrays.toString(arr));
-        System.out.println(sol);
+        //System.out.println(Arrays.toString(arr));
+        //System.out.println(sol);
         
         return sol;
     }
