@@ -18,26 +18,23 @@ class Solution {
         if(root==null){
             return true;
         }
-        Queue<TreeNode> que=new LinkedList<>();
-        que.add(root.left);
-        que.add(root.right);
-        
-        while(!que.isEmpty()){
-            TreeNode l=que.poll();
-            TreeNode r=que.poll();
-            if(l==null && r==null){
-                continue;
-            }
-            if(l==null || r==null){
-                return false;
-            }
-            if(l.val!=r.val){
-                return false;
-            }
-            que.add(l.left);
-            que.add(r.right);
-            que.add(l.right);
-            que.add(r.left);
+        return fun(root.left,root.right);
+    }
+    public boolean fun(TreeNode l,TreeNode r){
+        if(l==null && r==null){
+            return true;
+        }
+        if(l==null || r==null){
+            return false;
+        }
+        if(l.val!=r.val){
+            return false;
+        }
+        if(!fun(l.left,r.right)){
+            return false;
+        }
+        if(!fun(l.right,r.left)){
+            return false;
         }
         return true;
     }
